@@ -7,6 +7,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// 默认debu输出
+func init() {
+	log.SetLevel(log.Level(5))
+}
+
 func InitLog(fileName string, level L) {
 	InitLogAdapter(fileName)
 	// log.SetFormatter(&log.JSONFormatter{})
