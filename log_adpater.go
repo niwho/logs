@@ -12,8 +12,8 @@ import (
 
 var LogAdapterInstance *LogAdapter
 
-func InitLogAdapter(fileName string) log.Hook {
-	fileProvider := logprovider.NewFileProvider(fileName, logprovider.DayDur)
+func InitLogAdapter(fileName string, reservedDays int) log.Hook {
+	fileProvider := logprovider.NewFileProvider(fileName, logprovider.DayDur, reservedDays)
 	asyncFrameLog := logprovider.NewAsyncFrame(1, fileProvider)
 	LogAdapterInstance = &LogAdapter{
 		asyncFrameLog: asyncFrameLog,

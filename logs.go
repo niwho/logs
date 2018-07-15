@@ -12,8 +12,8 @@ func init() {
 	log.SetLevel(log.Level(5))
 }
 
-func InitLog(fileName string, level L) {
-	InitLogAdapter(fileName)
+func InitLog(fileName string, level L, reservedDays int) {
+	InitLogAdapter(fileName, reservedDays)
 	// log.SetFormatter(&log.JSONFormatter{})
 	log.SetLevel(log.Level(level))
 	log.AddHook(LogAdapterInstance)
@@ -31,8 +31,9 @@ func commonFileds(fields F) *log.Entry {
 	}
 	if fields == nil {
 		fields = map[string]interface{}{}
+		return log.WithFields(log.Fields(fields))
 	}
-	fields["0pos"] = fmt.Sprintf("%s:%d", file, line)
+	fields["pos"] = fmt.Sprintf("%s:%d", file, line)
 	return log.WithFields(log.Fields(fields))
 }
 
