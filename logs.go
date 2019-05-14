@@ -3,6 +3,7 @@ package logs
 import (
 	"fmt"
 	"runtime"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -33,7 +34,7 @@ func commonFileds(fields F) *log.Entry {
 		fields = map[string]interface{}{}
 		return log.WithFields(log.Fields(fields))
 	}
-	fields["current_time"] = now.Format("2006-01-02 15:04:05.000")
+	fields["current_time"] = time.Now().Format("2006-01-02 15:04:05.000")
 	fields["pos"] = fmt.Sprintf("%s:%d", file, line)
 	return log.WithFields(log.Fields(fields))
 }
