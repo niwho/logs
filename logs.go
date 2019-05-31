@@ -14,7 +14,7 @@ func init() {
 	log.SetFormatter(&log.JSONFormatter{})
 }
 
-func SetFormatter(formatter Formatter) {
+func SetFormatter(formatter log.Formatter) {
 	log.SetFormatter(formatter)
 }
 
