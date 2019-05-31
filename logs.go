@@ -11,6 +11,11 @@ import (
 // 默认debu输出
 func init() {
 	log.SetLevel(log.Level(5))
+	log.SetFormatter(&log.JSONFormatter{})
+}
+
+func SetFormatter(formatter Formatter) {
+	log.SetFormatter(formatter)
 }
 
 func InitLog(fileName string, level L, reservedDays int) {
